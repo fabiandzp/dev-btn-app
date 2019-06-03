@@ -14,6 +14,16 @@ deploy:
   on:
     repo: fabiandzp/dev-btn-app
 
+
+jobs:
+  include:
+    - stage: deploy to qa
+      script: skip
+      deploy:
+        <<: *heroku
+        app: qa-btn-app
+    - stage: test qa
+      script: 'curl https://qa-btn-app.herokuapp.com/'
+
 after_deploy:
   - bash run_ui_tests.sh
-  
