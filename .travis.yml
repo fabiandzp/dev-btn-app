@@ -17,17 +17,7 @@ deploy:
   app: dev-btn-app-hk
   on:
     repo: fabiandzp/dev-btn-app
-
-    
-
-deploy:
-   provider: heroku
-  api_key:
-    secure: 83011039-6066-475e-837b-a45cadf1a8e4
-  <<: *heroku
-  app: qa-btn-app
-    - stage: test qa
-      script: 'curl https://qa-btn-app.herokuapp.com/'  
+ 
     
 after_deploy:
   - bash run_ui_tests.sh
