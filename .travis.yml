@@ -22,13 +22,16 @@ jobs:
         on:
           repo: fabiandzp/dev-btn-app        
     #- stage: test dev
-      script: 'curl https://dev-btn-app-hk.herokuapp.com/'
+
+            script: 'curl https://dev-btn-app-hk.herokuapp.com/'
+      
     - stage: deploy to qa
       script: skip
       deploy: # Hace deploy de Dev a QA
         <<: *heroku
         app: qa-btn-app
     #- stage: test qa
-      script: 'curl https://qa-btn-app.herokuapp.com/'
+    
+            script: 'curl https://qa-btn-app.herokuapp.com/'
     #- stage: UI Acceptance test
-      script: bash run_ui_tests.sh
+    script: bash run_ui_tests.sh
