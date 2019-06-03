@@ -17,7 +17,8 @@ jobs:
         provider: heroku
         app: dev-btn-app-hk
         api_key: 
-          secure: 83011039-6066-475e-837b-a45cadf1a8e4
+          #secure: 83011039-6066-475e-837b-a45cadf1a8e4
+          secure: $hk_api_key
         app: dev-btn-app-hk
         on:
           repo: fabiandzp/dev-btn-app  
@@ -25,7 +26,7 @@ jobs:
       script: 'curl https://dev-btn-app-hk.herokuapp.com/'
     - stage: deploy to qa
       script: skip
-      deploy:
+      deploy: # Hace deploy de Dev a QA
         <<: *heroku
         app: qa-btn-app
     - stage: test qa
