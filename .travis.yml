@@ -26,11 +26,11 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: 612d5676-de72-40cf-bd09-524906c18bed
+    secure: 83011039-6066-475e-837b-a45cadf1a8e4
 
-  app: app-btn-dev
+  app: dev-btn-app-hk
   on:
-    repo: fabiandzp/btn-app-dev
+    repo: fabiandzp/dev-btn-app
 
 after_deploy:
   - bash run_ui_tests.sh
