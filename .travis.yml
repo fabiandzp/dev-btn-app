@@ -2,9 +2,26 @@ language: python
 python:
   - "3.6"
 
-#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd
-script: skip
+addons: # get google-chrome-stable
+  chrome: stable
+
+before_install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
+    - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
+    - unzip ~/chromedriver_linux64.zip -d ~/
+    - rm ~/chromedriver_linux64.zip
+    - sudo mv -f ~/chromedriver /usr/local/share/
+    - sudo chmod +x /usr/local/share/chromedriver
+    - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
+install:
+  - "pip install pytest"
+  - "pip install pytest-selenium"
+  - "pip install -r requirements.txt"
+#Helloss
+script:
+  - whereis google-chrome-stable
+  - whereis chromedriver
+  #- behave tests/acceptance/
 
 deploy:
   provider: heroku
@@ -14,29 +31,7 @@ deploy:
   app: dev-btn-app-hk
   on:
     repo: fabiandzp/dev-btn-app
-#sldkhflkjdshfkj
-
-jobs:
-  include:
-    - stage: deploy to qa
-      script: skip
-      deploy:
-        <<: *heroku
-        app: qa-btn-app
-    - stage: test qa
-      script: 'curl https://qa-btn-app.herokuapp.com/'
 
 after_deploy:
   - bash run_ui_tests.sh
   
-  
-  #Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd#Hello alskdjalksjdlkasdkggfgfdgfdgfdgfdgf
-##asdasdasd
