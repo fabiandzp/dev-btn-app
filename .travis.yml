@@ -9,8 +9,6 @@ install:
 
 script: skip
 
-
-
 jobs:
   include:
     - stage: deploy to dev
@@ -31,6 +29,7 @@ jobs:
         <<: *heroku
         app: qa-btn-app
     - stage: test qa
-      script: 'https://qa-btn-app.herokuapp.com/'
+      script: 'curl https://qa-btn-app.herokuapp.com/'
 
-  
+after_deploy:
+  - bash run_ui_tests.sh
