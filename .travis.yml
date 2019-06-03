@@ -2,9 +2,27 @@ language: python
 python:
   - "3.6"
 
- script:
-  - skip
-#test
+addons: # get google-chrome-stable
+  chrome: stable
+
+before_install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
+    - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
+    - unzip ~/chromedriver_linux64.zip -d ~/
+    - rm ~/chromedriver_linux64.zip
+    - sudo mv -f ~/chromedriver /usr/local/share/
+    - sudo chmod +x /usr/local/share/chromedriver
+    - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
+install:
+  - "pip install pytest"
+  - "pip install pytest-selenium"
+  - "pip install -r requirements.txt"
+#Hello alskdjalksjdlkasd
+script:
+  - whereis google-chrome-stable
+  - whereis chromedriver
+  #- behave tests/acceptance/
+
 deploy:
   provider: heroku
   api_key:
@@ -16,3 +34,4 @@ deploy:
 
 after_deploy:
   - bash run_ui_tests.sh
+  
