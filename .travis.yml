@@ -14,7 +14,7 @@ jobs:
       script: skip
       deploy: &heroku
         provider: heroku
-      app: dev-btn-app-hk
+        app: dev-btn-app-hk
         api_key: 
           secure: $hk_api_key
         app: dev-btn-app-hk
@@ -22,7 +22,7 @@ jobs:
           repo: fabiandzp/dev-btn-app        
     #- stage: test dev
 
-    script: 'curl https://dev-btn-app-hk.herokuapp.com/'
+      script: 'curl https://dev-btn-app-hk.herokuapp.com/'
 
     - stage: deploy to qa
       script: skip
@@ -30,6 +30,6 @@ jobs:
         <<: *heroku
         app: qa-btn-app
     - stage: test qa
-     script: 'curl https://qa-btn-app.herokuapp.com/'
+      script: 'curl https://qa-btn-app.herokuapp.com/'
     #- stage: UI Acceptance test
-     script: bash run_ui_tests.sh
+      script: bash run_ui_tests.sh
