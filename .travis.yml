@@ -3,8 +3,7 @@ python:
   - "3.6"
 
 install:
-  - "pip install pytest"
-  - "pip install pytest-selenium"
+  #- "pip install pytest"
   - "pip install -r requirements.txt"
 
 script: skip
