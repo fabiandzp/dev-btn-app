@@ -30,8 +30,7 @@ jobs:
       deploy: # Hace deploy de Dev a QA
         <<: *heroku
         app: qa-btn-app
-    #- stage: test qa
-    
+    - stage: test qa
       script: 'curl https://qa-btn-app.herokuapp.com/'
     #- stage: UI Acceptance test
       script: bash run_ui_tests.sh
