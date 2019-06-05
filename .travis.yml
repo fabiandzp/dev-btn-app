@@ -20,9 +20,7 @@ jobs:
         #app: dev-btn-app-hk
         on:
           repo: fabiandzp/dev-btn-app
-
-    #- stage: test dev
-    #  script: 'curl https://dev-btn-app-hk.herokuapp.com/'
+      after_deploy: https://dev-btn-app-hk.herokuapp.com/'
 
     - stage: deploy to qa
       script: skip
@@ -30,9 +28,6 @@ jobs:
         <<: *heroku
         app: qa-btn-app
       after_deploy: 'curl https://qa-btn-app.herokuapp.com/'
-
-    #- stage: test qa
-    #  script: 'curl https://qa-btn-app.herokuapp.com/'
 
     - stage: UI Acceptance test
       script: bash run_ui_tests.sh
