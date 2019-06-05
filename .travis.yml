@@ -18,7 +18,7 @@ jobs:
           secure: $hk_api_key
         on:
           repo: fabiandzp/dev-btn-app
-      after_deploy: 'https://dev-btn-app-hk.herokuapp.com/'
+      after_deploy: 'curl https://dev-btn-app-hk.herokuapp.com/'
 
     - stage: deploy to qa
       script: skip
