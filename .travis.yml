@@ -3,7 +3,6 @@ python:
   - "3.6"
 
 install:
-  #- "pip install pytest"
   - "pip install -r requirements.txt"
 
 script: skip
@@ -17,14 +16,13 @@ jobs:
         app: dev-btn-app-hk
         api_key: 
           secure: $hk_api_key
-        #app: dev-btn-app-hk
         on:
           repo: fabiandzp/dev-btn-app
-      after_deploy: https://dev-btn-app-hk.herokuapp.com/'
+      after_deploy: 'https://dev-btn-app-hk.herokuapp.com/'
 
     - stage: deploy to qa
       script: skip
-      deploy: # Hace deploy de Dev a QA
+      deploy:
         <<: *heroku
         app: qa-btn-app
       after_deploy: 'curl https://qa-btn-app.herokuapp.com/'
