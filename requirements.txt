@@ -1,5 +1,5 @@
 Flask
 behave==1.2.5
 selenium==3.4.1
-gunicorn==19.9.0
+gunicorn==22.0.0
 
